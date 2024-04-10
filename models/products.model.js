@@ -12,6 +12,11 @@ const objectSchema = {
         required: true,
         unique: true 
     },
+    provider: {
+        type: mongoose.Schema.Types.ObjectId,
+        //ESTA "REF" ES LA FOREING KEY DE LA OTRA TABLA PARA LA RELACION
+        ref: 'Provider'
+    },
     price: { 
         type: Number, 
         required: true 
@@ -42,3 +47,20 @@ const productSchema = mongoose.Schema(objectSchema);
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
+
+// Insertar un producto
+ 
+/* const p = new Product({
+    id: 4,
+	title: "Tortilla - Marquina",
+	price: 1.80,
+    description:"La mejor tortilla de la zona en el Teatro Marquina",
+	provider: "6613fe140f302cb6fdf8937c",
+});
+
+// Guardar en la BBDD
+p.save()
+.then((data)=>console.log(data))
+.catch(err=>console.log(err))
+
+Product.find({}).then(data=>console.log(data));  */
